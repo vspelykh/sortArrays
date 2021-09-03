@@ -1,0 +1,41 @@
+public class Solution {
+
+    public static void main(String[] args) {
+//        //TDD
+//        System.out.println(Arrays.asList(sort(new Integer[]{13, 8, 15, 5, 17})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{13, 8, 15, 5, 17, 11})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{1,2,3,3,3,4,5})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{1,2,4,4,4,5})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{0})));
+
+    }
+
+    public static Integer[] sort(Integer[] array) {
+        final double median = getMedian(array);
+        Arrays.sort(array, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+
+                return (int) (Math.abs(median - o1) - Math.abs(median - o2));
+            }
+        });
+        return array;
+    }
+
+    public static double getMedian(Integer[] array){
+        int median = 0;
+        Arrays.sort(array);
+        if (array.length %2 == 1){
+            median = array[array.length/2];
+        } else {
+            median = (array[(array.length/2)-1] + array[array.length/2])/2;
+        }
+        return median;
+    }
+}
