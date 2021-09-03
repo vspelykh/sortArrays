@@ -1,21 +1,5 @@
 public class Solution {
 
-    public static void main(String[] args) {
-//        //TDD
-//        System.out.println(Arrays.asList(sort(new Integer[]{13, 8, 15, 5, 17})));
-//        System.out.println("----------------------------------------------");
-//        System.out.println(Arrays.asList(sort(new Integer[]{13, 8, 15, 5, 17, 11})));
-//        System.out.println("----------------------------------------------");
-//        System.out.println(Arrays.asList(sort(new Integer[]{1,2,3,3,3,4,5})));
-//        System.out.println("----------------------------------------------");
-//        System.out.println(Arrays.asList(sort(new Integer[]{1,2,4,4,4,5})));
-//        System.out.println("----------------------------------------------");
-//        System.out.println(Arrays.asList(sort(new Integer[]{})));
-//        System.out.println("----------------------------------------------");
-//        System.out.println(Arrays.asList(sort(new Integer[]{0})));
-
-    }
-
     public static Integer[] sort(Integer[] array) {
         final double median = getMedian(array);
         Arrays.sort(array, new Comparator<Integer>() {
@@ -37,5 +21,21 @@ public class Solution {
             median = (array[(array.length/2)-1] + array[array.length/2])/2;
         }
         return median;
+    }
+    
+    public static void main(String[] args) {
+//        //TDD
+//        System.out.println(Arrays.asList(sort(new Integer[]{13, 8, 15, 5, 17})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{13, 8, 15, 5, 17, 11})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{1,2,3,3,3,4,5})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{1,2,4,4,4,5})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{})));
+//        System.out.println("----------------------------------------------");
+//        System.out.println(Arrays.asList(sort(new Integer[]{0})));
+
     }
 }
