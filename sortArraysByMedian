@@ -1,6 +1,7 @@
 public class Solution {
 
     public static Integer[] sort(Integer[] array) {
+    if (array == null || array.length == 0) return new Integer[0];
         final double median = getMedian(array);
         Arrays.sort(array, new Comparator<Integer>() {
             @Override
