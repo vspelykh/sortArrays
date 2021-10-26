@@ -1,0 +1,54 @@
+import java.util.Arrays;
+import java.util.Date;
+
+public class MergeSort {
+
+    public static void merge(int[] array, int from, int to) {
+        int middle = ((from + to) / 2) + 1;
+        int left = from;
+        int right = middle;
+        int cursor = 0;
+
+        int[] tmp = new int[to - from + 1];
+        while (left < middle || right <= to) {
+            if (left >= middle) {
+                tmp[cursor] = array[right];
+//                System.out.println("Остаток справа: " + array[right]);
+                right++;
+            } else if (right > to) {
+                tmp[cursor] = array[left];
+//                System.out.println("Остаток слева: " + array[left]);
+                left++;
+            } else if (array[left] <= array[right]) {
+                tmp[cursor] = array[left];
+//                System.out.println("Слева меньше: " + array[left]);
+                left++;
+            } else if (array[right] < array[left]) {
+                tmp[cursor] = array[right];
+//                System.out.println("Справа меньше: " + array[right]);
+                right++;
+            }
+            cursor++;
+        }
+        System.arraycopy(tmp, 0, array, from, tmp.length);
+    }
+
+    public static void mergeSort(int[] source, int left, int right) {
+        if ((right - left) > 1) {
+            int middle = (right + left) / 2;
+            mergeSort(source, left, middle);
+            mergeSort(source, middle + 1, right);
+        }
+        merge(source, left, right);
+    }
+
+    public static void main(String[] args) {
+        int[] array = SelectionSort.bigArray();
+        long start = new Date().getTime();
+        mergeSort(array, 0, array.length-1);
+        long finish = new Date().getTime();
+        int res = (int) ((finish - start) / 1000);
+        System.out.println(Arrays.toString(array));
+        System.out.println("It took " + res + "s.");
+    }
+}
