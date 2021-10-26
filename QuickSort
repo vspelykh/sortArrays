@@ -1,0 +1,56 @@
+import java.util.Arrays;
+import java.util.Date;
+
+public class QuickSort {
+    /* Быстрая сортировка
+       @vspelykh
+     */
+
+    private static void swap(int[] array, int firstIndex, int secondIndex){
+        int temp = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = temp;
+    }
+
+    private static int partition(int[] array, int left, int right) {
+        int pivot = array[(right + left) / 2];
+        while (left <= right) {
+            while (array[left] < pivot) {
+                left++;
+            }
+            while (array[right] > pivot) {
+                right--;
+            }
+            if (left <= right) {
+                swap(array, left, right);
+                left++;
+                right--;
+            }
+        }
+        return left;
+    }
+
+    public static void quickSort(int[] array, int left, int right){
+
+        int index = 0;
+        if (array.length > 1) {
+            index = partition(array, left, right);
+            if (left < index - 1) {
+                quickSort(array, left, index - 1);
+            }
+            if (index < right) {
+                quickSort(array, index, right);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = SelectionSort.bigArray();
+        long start = new Date().getTime();
+        quickSort(array, 0, array.length-1);
+        long finish = new Date().getTime();
+        int res = (int) ((finish - start) / 1000);
+        System.out.println(Arrays.toString(array));
+        System.out.println("It took " + res + "s.");
+    }
+}
