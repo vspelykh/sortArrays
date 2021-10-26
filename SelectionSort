@@ -1,0 +1,52 @@
+import java.util.Arrays;
+import java.util.Date;
+
+public class SelectionSort {
+    /*  Сортировка выбором
+        @vspelykh
+        Скорость сортировки: O(n*n)
+     */
+    public static void selectionSort(int[] array){
+        for (int i = 0; i < array.length; i++){
+            int min = array[i];
+            int minId = i;
+            for (int j = i+1; j < array.length; j++){
+                if (array[j] < min) {
+                    min = array[j];
+                    minId = j;
+                }
+            }
+            int temp = array[i];
+            array[i] = min;
+            array[minId] = temp;
+        }
+    }
+
+    /*  test:
+    *   6-7 seconds for 100_000 elements
+    *   160 seconds for 500_000 elements
+    *   295 seconds for 700_000 elements
+    */
+    public static void main(String[] args) {
+
+        int[] bigArray = bigArray();
+        long startTime = new Date().getTime();
+        selectionSort(bigArray);
+        long endTime = new Date().getTime();
+        System.out.println(Arrays.toString(bigArray));
+        System.out.println("It took " + ((endTime - startTime) /1000) + "s.");
+
+    }
+
+    public static int[] bigArray(){
+        int[] array = new int[10_000_000];
+        for (int i = 0; i < 10_000_000; i++){
+            array[i] = (int) (Math.random() * 10_000_000);
+        }
+        return array;
+    }
+    public static int[] smallArray(){
+        return new int[]{12, 26, 1, 95, 45, 17, 87, 27, 32, 40, 99, 2, 55, 3, 67, 23, 69, 11, 39, 19};
+    }
+
+}
